@@ -1,21 +1,40 @@
 #include "HexDocument.h"
-
+#include <QFile>
 
 
 HexDocument::HexDocument(){}
 
-HexDocument::~HexDocument(){}
+HexDocument::~HexDocument()
+{
+    currentFile.close();
+}
 
 
 bool HexDocument::load(const QString& path)
 {
     
+    if (currentFile.isOpen()) 
+    {
+        currentFile.close();
+    }
+
+    file.setFileName(filename);  // set new file name
+
+    return file.open();
 }
 
 
 bool HexDocument::save(const QString& path)
 {
+    bool isValid = false;
 
+    if (currentFile.isOpen()) 
+    {
+        currentFile.write(buffer);
+        isValid = true;
+    }
+
+    return isValid;
 }
 
 

@@ -70,7 +70,7 @@ qint64 HexDocument::size() const
 
 void HexDocument::insert(qint64 pos, const QByteArray& data)
 {
-    buffer.insert(pos, data); //TODO: errpr checking for both.
+    buffer.insert(pos, data); //TODO: error checking for both.
 }
 
 

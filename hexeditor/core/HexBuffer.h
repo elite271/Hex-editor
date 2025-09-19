@@ -17,7 +17,7 @@ public:
 
 private:
     qint64 chunkSize;
-    // platform-specific mmap or page cache
+    QByteArray currentChunk;
 };
 
 #endif // HEXBUFFER_H

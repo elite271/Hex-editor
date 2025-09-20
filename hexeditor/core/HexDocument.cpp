@@ -6,7 +6,7 @@ HexDocument::HexDocument(){}
 
 HexDocument::~HexDocument()
 {
-    currentFile.close();
+    // currentFile.close();
 }
 
 

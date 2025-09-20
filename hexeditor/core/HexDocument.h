@@ -27,10 +27,10 @@ public:
 
 private:
     QString filePath;
-    QByteArray buffer; // could implement HexBuffer to do this later.
+    QByteArray buffer; // implement HexBuffer to do this later for larger files.
     bool dirty;
 
-    QFile currentFile;
+    QFile* currentFile;
 };
 
 #endif // HEXDOCUMENT_H

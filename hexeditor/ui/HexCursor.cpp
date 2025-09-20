@@ -1,7 +1,11 @@
 #include "HexCursor.h"
 
 
-HexCursor(){}
+HexCursor::HexCursor()
+{
+
+}
+
 
 qint64 HexCursor::positionByte() const
 {

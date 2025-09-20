@@ -1,10 +1,15 @@
 #include "HexBuffer.h"
 
 
-HexBuffer(){}
+HexBuffer()
+{
 
+}
 
-~HexBuffer(){}
+~HexBuffer()
+{
+
+}
 
 
 bool loadChunk(qint64 offset, qint64 size)

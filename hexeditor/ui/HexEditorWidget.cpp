@@ -1,12 +1,15 @@
 #include "HexEditorWidget.h"
 
 
-explicit HexEditorWidget::HexEditorWidget(QWidget* parent = nullptr)
+HexEditorWidget::HexEditorWidget(QWidget* parent)
 {
 
 }
 
-HexEditorWidget::~HexEditorWidget(){}
+HexEditorWidget::~HexEditorWidget()
+{
+    
+}
 
 
 bool HexEditorWidget::loadFile(const QString& path)

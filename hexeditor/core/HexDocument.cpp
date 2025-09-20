@@ -2,45 +2,49 @@
 #include <QFile>
 
 
-HexDocument::HexDocument(){}
+HexDocument::HexDocument(QObject* parent) 
+  : QObject(parent)
+{
+    currentFile = new QFile(this);
+}
 
 HexDocument::~HexDocument()
 {
-    // currentFile.close();
+
 }
 
 
 bool HexDocument::load(const QString& path)
 {
-    
-    if (currentFile.isOpen()) 
-    {
-        currentFile.close();
-    }
+    currentFile->setFileName(path);
 
-    file.setFileName(filename);  // set new file name
+    if (!currentFile->open(QIODevice::ReadOnly))
+        return false;
 
-    return file.open();
+
+    buffer = currentFile->readAll(); // Will use HexBuffer later to support larger files.
+
+    return true;
 }
 
 
 bool HexDocument::save(const QString& path)
 {
-    bool isValid = false;
+    currentFile->setFileName(path);
 
-    if (currentFile.isOpen()) 
-    {
-        currentFile.write(buffer);
-        isValid = true;
-    }
+    if (!currentFile->open(QIODevice::WriteOnly))
+        return false;
 
-    return isValid;
+    qint64 bytesWritten = currentFile->write(buffer);
+
+    return bytesWritten == buffer.size();
 }
+
 
 
 char HexDocument::readByte(qint64 pos) const
 {
-    if (pos < buffer.size())
+    if ((pos >= 0 && pos < buffer.size()))
     {
         return buffer[pos];
     }
@@ -54,11 +58,12 @@ void HexDocument::writeByte(qint64 pos, char value)
 {
     if (pos < buffer.size())
     {
-        buffer.insert(pos, value);
+        buffer[pos] = value;
+        dirty = true;
+        return;
     }
     
     QMessageBox::warning(nullptr, "Buffer Error", "Cannot write, buffer out of range.");
-    return '\0';
 }
 
 
@@ -70,13 +75,28 @@ qint64 HexDocument::size() const
 
 void HexDocument::insert(qint64 pos, const QByteArray& data)
 {
-    buffer.insert(pos, data); //TODO: error checking for both.
+    if (pos < 0 || pos > buffer.size()) 
+    {
+        QMessageBox::warning(nullptr, "Buffer Error", "Cannot insert, position out of range.");
+        return;
+    }
+    
+    buffer.insert(pos, data);
+    dirty = true;
 }
 
 
 void HexDocument::erase(qint64 pos, qint64 length)
 {
+    
+    if (pos < 0 || pos + length > buffer.size()) 
+    {
+        QMessageBox::warning(nullptr, "Buffer Error", "Cannot erase, range out of bounds.");
+        return;
+    }
+    
     buffer.erase(pos, length);
+    dirty = true;
 }
 
 

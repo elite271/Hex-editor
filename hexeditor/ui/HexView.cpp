@@ -35,3 +35,16 @@ void HexView::mouseMoveEvent(QMouseEvent* event)
 {
 
 }
+
+
+
+void HexView::updateCursor()
+{
+
+}
+
+
+void HexView::renderSelection(QPainter& painter)
+{
+
+}

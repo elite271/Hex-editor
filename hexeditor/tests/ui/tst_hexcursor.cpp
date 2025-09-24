@@ -22,60 +22,59 @@ private slots:
 
 
 
-  void TestHexCursor::testpositionByte()
-  {
+void TestHexCursor::testpositionByte()
+{
+  HexCursor hexcursor;
 
-  }
-
-
-  void TestHexCursor::testpositionNibble()
-  {
-
-  }
+}
 
 
-  void TestHexCursor::testanchor()
-  {
-
-  }
-
-
-  void TestHexCursor::testmode()
-  {
-
-  }
+void TestHexCursor::testpositionNibble()
+{
+  HexCursor hexcursor;
+}
 
 
-  void TestHexCursor::testmoveLeft()
-  {
-
-  }
-
-
-  void TestHexCursor::testmoveRight()
-  {
-
-  }
+void TestHexCursor::testanchor()
+{
+  HexCursor hexcursor;
+}
 
 
-  void TestHexCursor::testmoveUp()
-  {
+void TestHexCursor::testmode()
+{
+  HexCursor hexcursor;
+}
 
-  }
-
-
-  void TestHexCursor::testmoveDown()
-  {
-
-  }
-
-
-  void TestHexCursor::testhasSelection()
-  {
-    
-  }
+  
+void TestHexCursor::testmoveLeft()
+{
+  HexCursor hexcursor;
+}
 
 
+void TestHexCursor::testmoveRight()
+{
+  HexCursor hexcursor;
+}
+
+
+void TestHexCursor::testmoveUp()
+{
+  HexCursor hexcursor;
+}
+
+
+void TestHexCursor::testmoveDown()
+{
+  HexCursor hexcursor;
+}
+
+
+void TestHexCursor::testhasSelection()
+{
+  HexCursor hexcursor;
+}
 
 
 QTEST_MAIN(TestHexCursor)

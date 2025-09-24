@@ -8,3 +8,6 @@ class TestHexDocument : public QObject
 private slots:
 
 };
+
+QTEST_MAIN(TestHexDocument)
+#include "tst_hexdocument.moc"

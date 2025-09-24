@@ -8,3 +8,9 @@ class TestHexBuffer : public QObject
 private slots:
 
 };
+
+
+
+
+QTEST_MAIN(TestHexBuffer)
+#include "tst_hexbuffer.moc"

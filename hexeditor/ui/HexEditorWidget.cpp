@@ -3,7 +3,10 @@
 
 HexEditorWidget::HexEditorWidget(QWidget* parent)
 {
-
+    view = new HexView(this);
+    document = new HexDocument(this);
+    undoStack = new HexUndoStack(this);
+    searcher = new HexSearchEngine(this);
 }
 
 HexEditorWidget::~HexEditorWidget()
@@ -26,7 +29,7 @@ bool HexEditorWidget::saveFile(const QString& path)
 
 void HexEditorWidget::setDocument(HexDocument* doc)
 {
-
+    document = doc;
 }
 
 

@@ -14,13 +14,13 @@ HexEditorWidget::~HexEditorWidget()
 
 bool HexEditorWidget::loadFile(const QString& path)
 {
-
+    document->load(path);
 }
     
 
 bool HexEditorWidget::saveFile(const QString& path)
 {
-
+    document->save(path);
 }
 
 

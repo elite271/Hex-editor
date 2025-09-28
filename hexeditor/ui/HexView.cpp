@@ -5,12 +5,13 @@
 HexView::HexView(QWidget* parent)
   : QObject(parent)
 {
-
+    cursor = new HexCursor();
+    caretBlinkTimer = new QTimer(this);
 }
 
 HexView::~HexView()
 {
-
+    delete cursor;
 }
 
 void HexView::paintEvent(QPaintEvent* event)
